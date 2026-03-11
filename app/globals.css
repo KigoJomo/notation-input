@@ -148,6 +148,7 @@
     .prototype-workspace {
       display: grid;
       grid-template-columns: minmax(18rem, 20rem) minmax(0, 1fr);
+      grid-template-rows: minmax(0, 1fr);
       align-items: stretch;
     }
 
