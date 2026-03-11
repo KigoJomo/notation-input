@@ -1265,24 +1265,31 @@ export function NotationInputPrototype() {
 
           <TabsContent
             value="create"
-            className="prototype-workspace mt-0 flex min-h-0 flex-1 flex-col gap-3 overflow-hidden"
+            className="prototype-workspace mt-0 grid min-h-0 flex-1 grid-rows-[auto_minmax(0,1fr)] gap-3 overflow-hidden"
           >
-            <div className="prototype-brief flex flex-col gap-2 px-4">
-              <h2 className="font-medium text-base">Question prompt</h2>
-              <Label htmlFor="question-prompt" className="sr-only">
-                Question prompt
-              </Label>
-              <Textarea
-                id="question-prompt"
-                value={questionPrompt}
-                onChange={(event) => setQuestionPrompt(event.target.value)}
-                className="min-h-16 bg-white"
-              />
-              <div className="flex flex-wrap items-center justify-between gap-2">
+            <Card
+              size="sm"
+              className="prototype-brief border border-slate-200 bg-slate-50/80 shadow-none"
+            >
+              <CardHeader className="gap-1.5">
+                <CardTitle>Question prompt</CardTitle>
+              </CardHeader>
+              <CardContent className="space-y-3">
+                <Label htmlFor="question-prompt" className="sr-only">
+                  Question prompt
+                </Label>
+                <Textarea
+                  id="question-prompt"
+                  value={questionPrompt}
+                  onChange={(event) => setQuestionPrompt(event.target.value)}
+                  className="min-h-16 bg-white"
+                />
                 <p className="text-sm text-slate-600">
                   Build the correct answer below, then continue.
                 </p>
-                <div className="flex gap-2">
+              </CardContent>
+              <CardFooter className="border-t border-slate-200">
+                <div className="flex w-full flex-wrap items-center justify-end gap-2">
                   <Button
                     variant="ghost"
                     size="sm"
@@ -1294,8 +1301,8 @@ export function NotationInputPrototype() {
                     Continue
                   </Button>
                 </div>
-              </div>
-            </div>
+              </CardFooter>
+            </Card>
 
             <NotationEditor
               title="Correct answer"
@@ -1308,7 +1315,7 @@ export function NotationInputPrototype() {
 
           <TabsContent
             value="answer"
-            className="prototype-workspace mt-0 flex min-h-0 flex-1 flex-col gap-3 overflow-hidden"
+            className="prototype-workspace mt-0 grid min-h-0 flex-1 grid-rows-[auto_minmax(0,1fr)] gap-3 overflow-hidden"
           >
             <Card
               size="sm"
