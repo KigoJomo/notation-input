@@ -1,36 +1,41 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Notation Input
 
-## Getting Started
+A browser prototype for answering music questions directly on a staff instead of typing note names into a text box.
 
-First, run the development server:
+[Open the prototype](https://notation.experiments.kigo.ke)
+
+## The experiment
+
+The prototype has three steps. First, an author builds a two-measure answer in treble clef and 4/4 time. A learner then places notes or rests on the staff. The review compares both versions and marks missing, incorrect, and extra events.
+
+The editor currently supports:
+
+- eighth, quarter, and half notes or rests
+- pitches from C4 through A5
+- sharps, flats, and naturals
+- drag and click placement on an SVG staff
+- exact checking by measure, start position, duration, pitch, and accidental
+- a small Convex-backed feedback panel for comments on the interaction
+
+This is deliberately narrow. It does not handle other clefs, time signatures, tuplets, ties, playback, or MusicXML.
+
+## Run it locally
+
+You need Bun and a Convex deployment.
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+bun install
+bunx convex dev
+bun run dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Convex writes `NEXT_PUBLIC_CONVEX_URL` to the local environment file during setup.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Checks
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```bash
+bun run lint
+bun run typecheck
+```
 
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+The package still has a `test` script, but the test files it points at are missing from the current repository. Fix that stale script before treating `bun run check` as a working validation command.
